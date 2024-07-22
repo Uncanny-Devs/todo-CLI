@@ -1,4 +1,32 @@
 import pool from "./db.js";
+import { config } from "dotenv";
+config();
+
+const createDB = async () => {
+	const dbName = process.env.DB;
+	try {
+		// Check if the database already exists
+		const checkDbExistQuery = `
+		SELECT 1 FROM pg_database WHERE datname = $1;
+	  `;
+		const res = await serverPool.query(checkDbExistQuery, [dbName]);
+
+		if (res.rowCount === 0) {
+			// Database does not exist, create it
+			await serverPool.query(`CREATE DATABASE ${dbName}`);
+			console.log(`Database ${dbName} created successfully.`);
+		} else {
+			console.log(`Database ${dbName} already exists.`);
+		}
+	} catch (error) {
+		console.error("Error creating database:", error);
+	} finally {
+		await serverPool.end();
+	}
+};
+
+// Create DB if not present already
+createDB();
 
 const setupDatabase = async () => {
 	try {

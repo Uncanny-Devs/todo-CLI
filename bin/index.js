@@ -6,8 +6,9 @@ import { hideBin } from 'yargs/helpers';
 import { createTodo, getTodos, getTodoById, updateTodo, deleteTodo } from './commands.js'; // Ensure these functions are defined
 
 function main() {
-  // Configure yargs
   yargs(hideBin(process.argv))
+    .scriptName("todo")
+    .usage('$0 <command> [options]')
     .command(
       'add',
       'Add a new todo',
@@ -23,8 +24,8 @@ function main() {
             alias: 'd',
             describe: 'Description of the todo',
             type: 'string',
-            demandOption: true,
-          });
+            demandOption: false,
+          })
       },
       (argv) => {
         createTodo(argv.title, argv.description);
@@ -50,6 +51,7 @@ function main() {
       },
       (argv) => {
         getTodoById(argv.id);
+		process.exit(0);
       }
     )
     .command(

@@ -11,6 +11,7 @@ git clone <repository-url>
 cd <repository-directory>
 npm install
 npm link
+npm run setDB
 ```
 
 ## Usage
