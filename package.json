@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "`todo` is a CRUD Todo CLI tool. It stores your todo in local Postgress. Read the README for setup and usage.",
   "main": "bin/index.js",
+  "type": "module",
   "scripts": {
+    "setDB": "node db/dbSetup.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
