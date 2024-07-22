@@ -1,0 +1,27 @@
+{
+  "name": "todo-cli",
+  "version": "1.0.0",
+  "description": "`todo` is a CRUD Todo CLI tool. It stores your todo in local Postgress. Read the README for setup and usage.",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CLI",
+    "todo",
+    "postgres",
+    "Node"
+  ],
+  "bin": {
+    "todo": "./bin/index.js"
+  },
+  "author": "Debatreya",
+  "license": "MIT",
+  "dependencies": {
+    "boxen": "^8.0.0",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.5",
+    "pg": "^8.12.0",
+    "yargs": "^17.7.2"
+  }
+}
